@@ -1,22 +1,36 @@
-<form id="parameterForm">
-    Start Date: <input type="date" id="startDate" name="startDate"><br>
-    End Date: <input type="date" id="endDate" name="endDate"><br>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    Country: 
-    <select id="country" name="country">
-        <option value="Tanzania">Tanzania</option>
-    </select><br>
+<div class="container mt-4">
+    <form id="parameterForm" class="border p-4 rounded">
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate">
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country" name="country" class="form-control">
+                <option value="Tanzania">Tanzania</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="school_name">School Name:</label>
+            <select id="school_name" name="school_name" class="form-control">
+                <option value="Tabora Boys">Tabora Boys</option>
+                <option value="Moshi Tech">Moshi Tech</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="updateIframe()">Apply</button>
+    </form>
 
-    School Name: 
-    <select id="school_name" name="school_name">
-        <option value="Tabora Boys">Tabora Boys</option>
-        <option value="Moshi Tech">Moshi Tech</option>
-    </select><br>
-
-    <button type="button" onclick="updateIframe()">Apply</button>
-</form>
-
-<iframe id="metabaseIframe" src="about:blank" width="800" height="600" frameborder="0"></iframe>
+    <div class="mt-4">
+        <iframe id="metabaseIframe" src="about:blank" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+</div>
 
 <script>
     function updateIframe() {
