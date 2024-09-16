@@ -16,15 +16,23 @@
     <button type="button" onclick="updateIframe()">Apply</button>
 </form>
 
-<iframe id="metabaseIframe" src="https://meta.dashboard.camara.org/public/dashboard/d577784b-bfc5-40f4-b770-bce345ccc850" width="800" height="600" frameborder="0"></iframe>
+<iframe id="metabaseIframe" src="about:blank" width="800" height="600" frameborder="0"></iframe>
 
 <script>
     function updateIframe() {
+        // Get the input values
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
         const country = document.getElementById('country').value;
         const school_name = document.getElementById('school_name').value;
 
+        // Validate that required fields are filled
+        if (!startDate || !endDate) {
+            alert("Please select both start and end dates.");
+            return;
+        }
+
+        // Update the iframe src with the query parameters
         const iframe = document.getElementById('metabaseIframe');
         iframe.src = `https://meta.dashboard.camara.org/public/dashboard/d577784b-bfc5-40f4-b770-bce345ccc850?start_date=${startDate}&end_date=${endDate}&country=${country}&school_name=${school_name}`;
     }
