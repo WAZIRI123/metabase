@@ -7,8 +7,6 @@
         <option value="Tanzania">Tanzania</option>
     </select><br>
 
-    Project: <input type="text" id="project" name="project"><br>
-
     School Name: 
     <select id="school_name" name="school_name">
         <option value="Tabora Boys">Tabora Boys</option>
@@ -25,10 +23,9 @@
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
         const country = document.getElementById('country').value;
-        const project = document.getElementById('project').value;
         const school_name = document.getElementById('school_name').value;
 
         const iframe = document.getElementById('metabaseIframe');
-        iframe.src = `https://meta.dashboard.camara.org/public/dashboard/d577784b-bfc5-40f4-b770-bce345ccc850?start_date=${startDate}&end_date=${endDate}&country=${country}&project=${project}&school_name=${school_name}`;
+        iframe.src = `https://meta.dashboard.camara.org/public/dashboard/d577784b-bfc5-40f4-b770-bce345ccc850?start_date=${startDate}&end_date=${endDate}&country=${country}&school_name=${school_name}`;
     }
 </script>
