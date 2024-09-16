@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Responsive Form with Bootstrap</title>
+    <title>Responsive Form with Loading Button</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div class="container mt-4">
+<div class="container-fluid mt-4">
     <form id="parameterForm" class="border p-4 rounded">
         <div class="form-group">
             <label for="startDate">Start Date:</label>
@@ -35,7 +35,7 @@
                 <option value="Moshi Tech">Moshi Tech</option>
             </select>
         </div>
-        <button type="button" class="btn btn-primary" onclick="updateIframe()">Apply</button>
+        <button type="button" id="applyBtn" class="btn btn-primary" onclick="updateIframe()">Apply</button>
     </form>
 
     <div class="mt-4">
@@ -50,6 +50,9 @@
 
 <script>
     function updateIframe() {
+        const applyBtn = document.getElementById('applyBtn');
+        const iframe = document.getElementById('metabaseIframe');
+
         // Get the input values
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
@@ -62,9 +65,18 @@
             return;
         }
 
+        // Change the button text to "Loading..." and disable it
+        applyBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+        applyBtn.disabled = true;
+
         // Update the iframe src with the query parameters
-        const iframe = document.getElementById('metabaseIframe');
         iframe.src = `https://meta.dashboard.camara.org/public/dashboard/d577784b-bfc5-40f4-b770-bce345ccc850?start_date=${startDate}&end_date=${endDate}&country=${country}&school_name=${school_name}`;
+
+        // When iframe loads, reset the button text
+        iframe.onload = function() {
+            applyBtn.innerHTML = 'Apply';
+            applyBtn.disabled = false;
+        };
     }
 </script>
 
